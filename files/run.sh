@@ -31,10 +31,6 @@ ln -s /DATA/config /usr/share/webapps/owncloud/config
       && chown -R nginx:www-data /DATA/apps \
       && chmod -R 0770 /DATA/apps
 
-# fix owncloud bugs
-mv /usr/share/webapps/owncloud/apps/calendar-* /usr/share/webapps/owncloud/apps/calendar
-mv /usr/share/webapps/owncloud/apps/contacts-* /usr/share/webapps/owncloud/apps/contacts
-
 # owncloud log directory
 [ ! -d /DATA/logs/owncloud ] \
       && mkdir -p /DATA/logs/owncloud \

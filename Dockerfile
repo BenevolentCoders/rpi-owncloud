@@ -1,6 +1,13 @@
 # Pull base image
 FROM hypriot/rpi-alpine-scratch
 
+# default database autoconfig
+ENV DBTYPE=mysql \
+    DBNAME=owncloud \
+    DBUSER=owncloud \
+    DBPASS=owncloud \
+    DBHOST=mysql
+
 # install
 # 1. install ngnix
 # 2. install php
@@ -26,10 +33,9 @@ RUN apk update \
 ADD files/nginx.conf /etc/nginx/
 ADD files/php-fpm.conf /etc/php/
 ADD files/config.php /tmp/
-# ADD files/autoconfig.php /tmp/
+ADD files/autoconfig.php /tmp/
 ADD files/run.sh /
 # RUN chmod +x /run.sh
-
 
 EXPOSE 80
 VOLUME ["/DATA"]
