@@ -6,7 +6,9 @@ ENV DBTYPE=mysql \
     DBNAME=owncloud \
     DBUSER=owncloud \
     DBPASS=owncloud \
-    DBHOST=mysql
+    DBHOST=mysql \
+    ADMINLOGIN=admin \
+    ADMINPASS=password
 
 # install
 # 1. install ngnix
@@ -28,14 +30,10 @@ RUN apk update \
     owncloud-contacts \
     && rm -rf /var/cache/apk/*
 
-    # && apk add -u musl \
-
 ADD files/nginx.conf /etc/nginx/
 ADD files/php-fpm.conf /etc/php/
 ADD files/config.php /tmp/
-ADD files/autoconfig.php /tmp/
 ADD files/run.sh /
-# RUN chmod +x /run.sh
 
 EXPOSE 80
 VOLUME ["/DATA"]

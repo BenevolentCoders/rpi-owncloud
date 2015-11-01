@@ -15,9 +15,21 @@ ln -s /DATA/config /usr/share/webapps/owncloud/config
 
 # copy owncloud autoconfig.php
 [ "`grep "'installed' => false" /DATA/config/config.php`" != "" ] \
-      && [ -f /tmp/autoconfig.php ] \
-      && mv /tmp/autoconfig.php /DATA/config/autoconfig.php \
-      && chown nginx:www-data /DATA/config/autoconfig.php
+      && cat > /DATA/config/autoconfig.php <<DELIM
+<?php
+\$AUTOCONFIG = array (
+'dbtype' => '$DBTYPE',
+'dbtableprefix' => 'oc_',
+'adminlogin' => '$ADMINLOGIN',
+'adminpass' => '$ADMINPASS',
+'dbuser' => '$DBUSER',
+'dbname' => '$DBNAME',
+'directory' => '/DATA/data',
+'dbhost' => '$DBHOST',
+'dbpass' => '$DBPASS',
+);
+DELIM
+chown nginx:www-data /DATA/config/autoconfig.php
 
 # owncloud data directory
 [ ! -d /DATA/data ] \
