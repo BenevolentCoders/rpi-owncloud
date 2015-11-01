@@ -10,6 +10,8 @@ Run all the commands from within the project root directory.
 
 ## Quick Start
 
+Owncloud is backed by a database. For this Image to work a mysql database has to be present and linked to the owncloud container.
+
 ```
 docker run -d --name owncloud-mysql -e MYSQL_ROOT_PASSWORD=rootpass -e MYSQL_USER=ownclouduser -e MYSQL_PASSWORD=owncloudpass -e MYSQL_DATABASE=owncloud hypriot/rpi-mysql
 docker run -d --name owncloud --link owncloud-mysql:mysql benevolentcoders/rpi-owncloud

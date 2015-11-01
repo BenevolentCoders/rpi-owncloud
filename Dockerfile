@@ -14,20 +14,26 @@ ENV DBTYPE=mysql \
 # 1. install ngnix
 # 2. install php
 # 3. install Owncloud
-# 4. fix php-fpm "Error relocating /usr/bin/php-fpm: __flt_rounds: symbol not found" bug
 RUN apk update \
     && apk add bash \
     nginx \
     php-fpm \
     php-json \
+    php-curl \
     ca-certificates \
     php-openssl \
     owncloud-mysql \
     owncloud-videoviewer \
+    owncloud-pdfviewer \
+    owncloud-music \
+    owncloud-documents \
     owncloud-tasks \
     owncloud-texteditor \
     owncloud-calendar \
     owncloud-contacts \
+    owncloud-external \
+    owncloud-encryption \
+    owncloud-mozilla_sync \
     && rm -rf /var/cache/apk/*
 
 ADD files/nginx.conf /etc/nginx/
