@@ -11,7 +11,8 @@ Run all the commands from within the project root directory.
 ## Quick Start
 
 ```
-docker run -d --name python benevolentcoders/rpi-owncloud
+docker run -d --name owncloud-mysql -e MYSQL_ROOT_PASSWORD=rootpass -e MYSQL_USER=ownclouduser -e MYSQL_PASSWORD=owncloudpass -e MYSQL_DATABASE=owncloud hypriot/rpi-mysql
+docker run -d --name owncloud --link owncloud-mysql:mysql benevolentcoders/rpi-owncloud
 ```
 
 ### Build Details

@@ -4,8 +4,8 @@ FROM hypriot/rpi-alpine-scratch
 # default database autoconfig
 ENV DBTYPE=mysql \
     DBNAME=owncloud \
-    DBUSER=owncloud \
-    DBPASS=owncloud \
+    DBUSER=ownclouduser \
+    DBPASS=owncloudpass \
     DBHOST=mysql \
     ADMINLOGIN=admin \
     ADMINPASS=password
