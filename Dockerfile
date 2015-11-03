@@ -34,6 +34,7 @@ RUN apk update \
     owncloud-external \
     owncloud-encryption \
     owncloud-mozilla_sync \
+    && sed -i -e "s/^.*$option_max_2gb_check.* false.*$/public $option_max_2gb_check = false;/" /usr/share/webapps/owncloud/apps/music/3rdparty/getID3/getid3/getid3.php
     && rm -rf /var/cache/apk/*
 
 ADD files/nginx.conf /etc/nginx/
